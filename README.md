@@ -1,4 +1,4 @@
-# linuxmuster-mailcow
+# edulution-mailcow
 
 Integration of Mailcow for Linuxmuster.net
 
@@ -11,15 +11,14 @@ Integration of Mailcow for Linuxmuster.net
 
 ## Maintainance Details
 
-|             Linuxmuster.net official             |         ❌ NO\*         |
+|             Linuxmuster.net official             |         ❌ NO         |
 | :----------------------------------------------: | :---------------------: |
-| [Community support](https://ask.linuxmuster.net) |        ❌ No\*\*        |
+| [Community support](https://ask.linuxmuster.net) |        ❌ No        |
 |                Actively developed                |         ✅ YES          |
 |             Maintainer organisation              |      Netzint GmbH       |
-|                Primary maintainer                | andreas.till@netzint.de |
+|                Primary maintainer                | lukas.spitznagel@netzint.de |
 
 \* The linuxmuster community consits of people who are nice and happy to help. They are not directly involved in the development though, and might not be able to help in all cases.
-\*\* The linuxmuster community consits of people who are nice and happy to help. They are not directly involved in the development though, and might not be able to help in any case.
 
 ## How does it work
 
@@ -37,8 +36,8 @@ More details about the sync workflow can be found in SyncWorkflow.md
    version: "2.1"
    services:
      linuxmuster-mailcow:
-       image: ghcr.io/linuxmuster/linuxmuster-mailcow:latest
-       container_name: mailcowcustomized_linuxmuster-mailcow
+       image: ghcr.io/edulution-io/edulution-mailcow:latest
+       container_name: edulution-mailcow
        volumes:
          - ./data/conf/dovecot:/conf/dovecot:rw
          - ./data/conf/sogo:/conf/sogo:rw
@@ -60,7 +59,7 @@ More details about the sync workflow can be found in SyncWorkflow.md
        networks:
          mailcow-network:
            aliases:
-             - linuxmuster
+             - edulution
    ```
 
 3. Configure environmental variables:
@@ -77,8 +76,8 @@ More details about the sync workflow can be found in SyncWorkflow.md
      - `LDAP-MAILCOW_API_URI` - mailcow API uri.
      - `LINUXMUSTER_MAILCOW_DOCKERAPI_URI` - dockerapi API uri.
 
-4. Start additional container: `docker compose up -d linuxmuster-mailcow`
-5. Check logs `docker compose logs -f linuxmuster-mailcow` (quit with ctrl+c). Please note: Connection errors are normal after all containers are started with `docker compose up -d`.
+4. Start additional container: `docker compose up -d edulution-mailcow`
+5. Check logs `docker compose logs -f edulution-mailcow` (quit with ctrl+c). Please note: Connection errors are normal after all containers are started with `docker compose up -d`.
 6. For projects and classes, make sure to call `sophomorix-class -c test --maillist` / `sophomorix-project -p test --maillist`. Otherwise no maillist will be created!
 
 ## Limitations
