@@ -234,7 +234,7 @@ md-sidenav .md-toolbar-tools.sg-toolbar-tools--dense.layout-align-center-center 
 
 /* Logo screen */
 md-content .md-default-theme.md-accent.md-bg {
-    background-color: rgb(59, 59, 63) !important;
+    background-color: rgb(49, 49, 49) !important /* rgb(59, 59, 63) !important; */
 }
 
 /* login background*/
