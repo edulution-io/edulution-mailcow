@@ -35,31 +35,36 @@ More details about the sync workflow can be found in SyncWorkflow.md
    ```yaml
    version: "2.1"
    services:
-     linuxmuster-mailcow:
-       image: ghcr.io/edulution-io/edulution-mailcow:latest
-       container_name: edulution-mailcow
-       volumes:
-         - ./data/conf/dovecot:/conf/dovecot:rw
-         - ./data/conf/sogo:/conf/sogo:rw
-       depends_on:
-         - nginx-mailcow
-         - dockerapi-mailcow
-         - php-fpm-mailcow
-         - sogo-mailcow
-         - dovecot-mailcow
-       environment:
-         - LINUXMUSTER_MAILCOW_LDAP_URI=ldap://10.0.0.1
-         - LINUXMUSTER_MAILCOW_LDAP_BASE_DN=DC=linuxmuster,DC=lan
-         - LINUXMUSTER_MAILCOW_LDAP_BIND_DN=CN=global-binduser,OU=Management,OU=GLOBAL,DC=linuxmuster,DC=lan
-         - LINUXMUSTER_MAILCOW_LDAP_BIND_DN_PASSWORD=<YOUR-PASSWORD>
-         - LINUXMUSTER_MAILCOW_API_KEY=<YOUR-API-KEY>
-         - LINUXMUSTER_MAILCOW_SYNC_INTERVAL=300
-         - LINUXMUSTER_MAILCOW_DOMAIN_QUOTA=20000
-         - LINUXMUSTER_MAILCOW_ENABLE_GAL=1
-       networks:
-         mailcow-network:
-           aliases:
-             - edulution
+    linuxmuster-mailcow:
+      image: ghcr.io/edulution-io/edulution-mailcow:latest
+      container_name: edulution-mailcow
+      volumes:
+        - ./data/conf/dovecot:/conf/dovecot:rw
+        - ./data/conf/sogo:/conf/sogo:rw
+      depends_on:
+        - nginx-mailcow
+        - dockerapi-mailcow
+        - php-fpm-mailcow
+        - sogo-mailcow
+        - dovecot-mailcow
+      environment:
+        - LINUXMUSTER_MAILCOW_LDAP_URI=ldap://10.0.0.1
+        - LINUXMUSTER_MAILCOW_LDAP_BASE_DN=DC=linuxmuster,DC=lan
+        - LINUXMUSTER_MAILCOW_LDAP_BIND_DN=CN=global-binduser,OU=Management,OU=GLOBAL,DC=linuxmuster,DC=lan
+        - LINUXMUSTER_MAILCOW_LDAP_BIND_DN_PASSWORD=<YOUR-PASSWORD>
+        - LINUXMUSTER_MAILCOW_API_KEY=<YOUR-API-KEY>
+        - LINUXMUSTER_MAILCOW_SYNC_INTERVAL=300
+        - LINUXMUSTER_MAILCOW_DOMAIN_QUOTA=20000
+        - LINUXMUSTER_MAILCOW_ENABLE_GAL=1
+      networks:
+        mailcow-network:
+          aliases:
+            - edulution
+
+    sogo-mailcow:
+        volumes:
+            - ./data/conf/sogo/custom-theme.css:/usr/lib/GNUstep/SOGo/WebServerResources/css/theme-default.css:z
+
    ```
 
 3. Configure environmental variables:

@@ -6,7 +6,9 @@ RUN pip3 install python-ldap requests coloredlogs
 COPY templates ./templates
 COPY src/* ./
 
+RUN chmod +x ./entrypoint.sh
+
 VOLUME [ "/conf/dovecot" ]
 VOLUME [ "/conf/sogo" ]
 
-ENTRYPOINT [ "python3", "syncer.py" ]
+ENTRYPOINT [ "entrypoint.sh" ]
