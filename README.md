@@ -35,7 +35,7 @@ More details about the sync workflow can be found in SyncWorkflow.md
    ```yaml
    version: "2.1"
    services:
-    linuxmuster-mailcow:
+    edulution-mailcow:
       image: ghcr.io/edulution-io/edulution-mailcow:latest
       container_name: edulution-mailcow
       volumes:
