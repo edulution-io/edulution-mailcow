@@ -11,4 +11,4 @@ RUN chmod +x ./entrypoint.sh
 VOLUME [ "/conf/dovecot" ]
 VOLUME [ "/conf/sogo" ]
 
-ENTRYPOINT [ "entrypoint.sh" ]
+ENTRYPOINT [ "./entrypoint.sh" ]
