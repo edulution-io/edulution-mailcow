@@ -163,6 +163,9 @@ class MailboxListStorage(TemporaryObjectListStorage):
             return super()._checkElementValueDelta(key, currentElement, newValue)
 
     def _checkElementValidity(self, element):
+        if "tags" in element:
+            if "not-managed" in element["tags"]:
+                return False
         return element["domain"] in self._domainListStorage._managed
 
 class AliasListStorage(TemporaryObjectListStorage):
